@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #paper {
+            display: flex;
+        } */
+
+        .block {
+            background: rgb(112, 55, 255);
+            width: 80px;
+            height: 80px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="paper">
+        <p id="word"></p>
+    </div> -->
+
+
+    <div class="block" id="blockk">
+
+    </div>
+</body>
+<script>
+    // document.addEventListener("keydown", e => {
+    //     if(e.key == " ") {
+    //         var item = document.createElement('p')
+    //         document.querySelector('#word').removeAttribute('id')
+    //         item.setAttribute('id', 'word')
+    //         document.getElementById("paper").appendChild(item)
+    //     }
+    //     console.log(e.key);
+    //     document.getElementById("word").innerText = e.key
+    // })
+
+    var block = document.getElementById("blockk")
+
+    var t = 0
+    var r = 0
+    var b = 0
+    var l = 0
+
+    document.addEventListener("keydown", e => {
+        var key = e.key;
+
+        console.log(key);
+        if (key == "ArrowUp") {
+            t -= 10
+            b += 10
+        } else if (key == "ArrowDown") {
+            t += 10
+            b -= 10
+        } else if (key == "ArrowRight") {
+            l += 10
+            r -= 10
+        } else if (key == "ArrowLeft") {
+            r += 10
+            l -= 10
+        }
+
+        block.style.top = t + "px";
+        block.style.right = r + "px";
+        block.style.bottom = b + "px";
+        block.style.left = l + "px";
+
+
+
+        if (key == "Enter") {
+            var item = document.createElement('div')
+            document.querySelector('#blockk').removeAttribute('id')
+            item.setAttribute('id', 'blockk')
+            item.setAttribute('style', 'inset: ' + t + 'px ' + r + 'px ' + b + 'px ' + l + 'px')
+            item.classList.add('block')
+            document.querySelector("body").appendChild(item)
+        }
+    })
+</script>
+
+</html>
